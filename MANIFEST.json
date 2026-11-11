@@ -1,0 +1,102 @@
+{
+  "version": "0.2.0-beta.1",
+  "files": [
+    {
+      "path": "__init__.py",
+      "sha256": "9C9EF425FFDC9007A2D26A5914339AFFFE8FABEE882F72D969B67A3142C23F6C"
+    },
+    {
+      "path": "audio_direction.py",
+      "sha256": "2BCB2CDFD413B4EC4471C4546E1A4857067F5C50A05C3DED63D275025F1E3D64"
+    },
+    {
+      "path": "canvas.py",
+      "sha256": "C06B6164CC33D5F7A1DBA0EBF7EF7508697111B781D170AE4F43DE90DCF56541"
+    },
+    {
+      "path": "core.py",
+      "sha256": "91D80225BFA1951863C01F7FD32CE3233541232B669E8299D02794F9D6CDF6E2"
+    },
+    {
+      "path": "LICENSE.txt",
+      "sha256": "8D3C1162B9752C68385D3716D5CEF92A34683D2E1E6F83E5C6774018CB41C91F"
+    },
+    {
+      "path": "README.md",
+      "sha256": "9B40C58076A2BCE4B2E3B936E3E73879B39224AE1E613A30E1BA1AF1333EFC94"
+    },
+    {
+      "path": "resource_policy.py",
+      "sha256": "C69E8079055A6919F28DF7DC946465CC6EB6F44AAEE99EA55F9A4CFF1DD55E1C"
+    },
+    {
+      "path": "source_settings.py",
+      "sha256": "82CA0A4AD4F01109DD611C5DC70196DC2EE7F2B7855D7F16DA89F5891E09F63B"
+    },
+    {
+      "path": "templates/dasiwa-pro.json",
+      "sha256": "6EF704283FAFFB3B5C07912E34561B17618AFB813BAAFF9B5C91618E4598C3CD"
+    },
+    {
+      "path": "templates/dasiwa-simple.json",
+      "sha256": "4793C9C99D77A881B38EB162D0BC0FFADE101E56A1D591246CEE03EF5EB0783A"
+    },
+    {
+      "path": "templates/eros-pro.json",
+      "sha256": "6022572DF7088761511A6AE68FD6154F0F05D0061D4B3F1389E2A7B2FB4E96E8"
+    },
+    {
+      "path": "templates/eros-simple.json",
+      "sha256": "AF640150F843E38ADB85620B4167121D66A8826ED4DF97D29718E1962E076233"
+    },
+    {
+      "path": "time_controls.py",
+      "sha256": "1674E54B148FD630A4AF8CA14373B8402FBC456C8C45775214A7AFEED8F65494"
+    },
+    {
+      "path": "translation.py",
+      "sha256": "549FA9A5B6AA5532AD83D3CC9AE80D1D493F6E538CAEA2400E96D56A8D232F86"
+    },
+    {
+      "path": "web/audio-plan.mjs",
+      "sha256": "61FE4813A8595E3C23D8707455DAC266A1AD9CFA539F9528BBC0E2E520B697C0"
+    },
+    {
+      "path": "web/lora-panel.mjs",
+      "sha256": "1979EDD919A57EDB3A57A65AA349E0B35062152801A41C36DE939FBFDFFD9427"
+    },
+    {
+      "path": "web/planner-labels.mjs",
+      "sha256": "5E35CDFBC98A8F9E98B4B4C2C4F0C7C8E1DD1F8228D1FFE66200CBCB085F1954"
+    },
+    {
+      "path": "web/planner-model.mjs",
+      "sha256": "D6B5EC43FB7E4CF5BFBD6ACAF265AF6D48985065F68B78186461109A68E185C8"
+    },
+    {
+      "path": "web/planner.css",
+      "sha256": "470D24C78FEE81235622493B7D1B34CE0A496E3FD6CB2D0B4FEB362A5468DD82"
+    },
+    {
+      "path": "web/planner.html",
+      "sha256": "CF5121686D24D32433519937AA67C5034C408E78A5200A9C4F04643D2EECB92B"
+    },
+    {
+      "path": "web/planner.mjs",
+      "sha256": "2986427D9115311E4BF1FCB8C445367C4EB8940C98CC95E30D4FF0746D4F50BE"
+    },
+    {
+      "path": "web/resource-ui.mjs",
+      "sha256": "042AA7B8E997F8BCF27E55D2956EFE45ADD91FF0DA8D72E047CC259194C4E419"
+    },
+    {
+      "path": "web/scene-launcher.js",
+      "sha256": "96D71F243BA9FC0D9D75F20664693F5FDE37B9E82D6764AD8ADD25D0216E53E0"
+    },
+    {
+      "path": "web/translator.mjs",
+      "sha256": "BC4AA002490C5B9D2889CF3AAA284CB584018A64D18F6CF398ED07211249B120"
+    }
+  ],
+  "workflow_sha256": "94BAF7622DFC0D29A5D90D1861098D2EB2E504BA64EC9B4E603E24D5353834D6"
+}

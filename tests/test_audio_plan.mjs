@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {audioDefaults,validateAudio,buildAudio,withAudio} from '../prophetero-scene-planner/web/audio-plan.mjs';
+import {initial,validProject} from '../prophetero-scene-planner/web/planner-model.mjs';
+import {resourceText} from '../prophetero-scene-planner/web/resource-ui.mjs';
+const a={...audioDefaults(),category:'ambience',environment:'cafe'};a.instruction=buildAudio(a);
+assert.match(a.instruction,/No speech or singing/);assert.match(a.instruction,/No music/);
+const composed=withAudio('Rain outside.',a);assert.equal(withAudio(composed,a),composed);
+assert.equal(withAudio(composed,audioDefaults()),'Rain outside.');
+assert.match(buildAudio({...a,speech:'voiceover'}),/Off-screen narration/);
+assert.match(buildAudio({...a,category:'silent'}),/post-production/);
+assert.throws(()=>validateAudio({...a,custom:'x'.repeat(1001)}));
+const old=initial();delete old.audio;assert.deepEqual(validProject(old).audio,audioDefaults());
+assert.deepEqual(validProject({...initial(),audio:a}).audio,a);
+for(const lang of ['EN','HU','DE','FR','ES','IT','PT','PL'])for(const key of ['title','auto','low','balanced','full','refresh','hint','ram','vram','busy','unknown_gpu','unknown_ram','unavailable'])assert.notEqual(resourceText(key,lang),key);
+console.log('PASS: audio guidance, no duplicate prompt blocks, silent/voiceover, backward-compatible projects, eight-language resource controls.');

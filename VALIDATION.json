@@ -1,0 +1,97 @@
+{
+  "version": "0.2.0-beta.1",
+  "unit_tests": [
+    {
+      "name": "test_audio_plan.mjs",
+      "exit": 0,
+      "output": "PASS: audio guidance, no duplicate prompt blocks, silent/voiceover, backward-compatible projects, eight-language resource controls.\n"
+    },
+    {
+      "name": "test_auto_aspect.mjs",
+      "exit": 0,
+      "output": "PASS: first-image orientation, manual canvas lock, later images/removal, old project preservation and aspect mismatch.\n"
+    },
+    {
+      "name": "test_canvas.py",
+      "exit": 0,
+      "output": "test_all_presets_and_custom_export_actual_dimensions (__main__.CanvasTests.test_all_presets_and_custom_export_actual_dimensions) ... ok\ntest_invalid_canvas_is_rejected (__main__.CanvasTests.test_invalid_canvas_is_rejected) ... ok\ntest_native_i2v_does_not_call_canvas_adaptation (__main__.CanvasTests.test_native_i2v_does_not_call_canvas_adaptation) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.209s\n\nOK\n"
+    },
+    {
+      "name": "test_canvas_translation.mjs",
+      "exit": 0,
+      "output": "PASS: expanded/custom dimensions, source geometry preservation and old/new translation project drafts.\n"
+    },
+    {
+      "name": "test_core.py",
+      "exit": 0,
+      "output": "test_all_real_templates (__main__.SceneTests.test_all_real_templates) ... ok\ntest_crop_and_contain_pixels (__main__.SceneTests.test_crop_and_contain_pixels) ... ok\ntest_exported_duration_warning (__main__.SceneTests.test_exported_duration_warning) ... ok\ntest_frontend_widget_layouts_and_live_connections (__main__.SceneTests.test_frontend_widget_layouts_and_live_connections) ... ok\ntest_timing_and_rejections (__main__.SceneTests.test_timing_and_rejections) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.051s\n\nOK\n"
+    },
+    {
+      "name": "test_launcher.mjs",
+      "exit": 0,
+      "output": "PASS: current graph capture, non-serialized one-time button, auto-size, SwarmUI route prefix, and blank planner opening.\nPASS: verified prepared image discovery and on-load dropdown registration; unrelated paths excluded.\n"
+    },
+    {
+      "name": "test_model.mjs",
+      "exit": 0,
+      "output": "PASS: crop geometry, timing, draft validation, scene text and 116 labels in 8 languages.\n"
+    },
+    {
+      "name": "test_native_missing_media.mjs",
+      "exit": 0,
+      "output": "PASS: actual ComfyUI 1.57.6 missing-media predicate; asynchronous load-hook ordering; array/computed choices; absent files remain flagged.\n"
+    },
+    {
+      "name": "test_review.mjs",
+      "exit": 0,
+      "output": "PASS: exact source controls, compact widgets, scoped resets, immutable source, LoRA strengths, keyframe advice, unknown expressions and non-24fps limits.\n"
+    },
+    {
+      "name": "test_source_attach.mjs",
+      "exit": 0,
+      "output": "PASS: source attach preserves image/crop/timing/prompt/audio/event state; explicit new-plan mode and invalid import isolation.\nPASS: switching workflow refreshes source settings and clears old loader edits without losing the scene.\n"
+    },
+    {
+      "name": "test_source_settings.py",
+      "exit": 0,
+      "output": "test_duration_fields_match_true_length_and_shared_controls_stay (__main__.SourceSettings.test_duration_fields_match_true_length_and_shared_controls_stay) ... ok\ntest_native_loader_disable_and_inactive_custom_preservation (__main__.SourceSettings.test_native_loader_disable_and_inactive_custom_preservation) ... ok\ntest_new_native_chain_preserves_links_and_never_creates_cycle (__main__.SourceSettings.test_new_native_chain_preserves_links_and_never_creates_cycle) ... ok\ntest_no_edit_preserves_source_widgets_and_lora_order (__main__.SourceSettings.test_no_edit_preserves_source_widgets_and_lora_order) ... ok\ntest_power_edits_are_real_widgets_not_prompt_tags (__main__.SourceSettings.test_power_edits_are_real_widgets_not_prompt_tags) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.027s\n\nOK\n"
+    },
+    {
+      "name": "test_translation.py",
+      "exit": 0,
+      "output": "test_actual_routes_and_no_auto_application (__main__.TranslationHTTP.test_actual_routes_and_no_auto_application) ... ok\ntest_busy_generation_bad_input_and_token_loss_are_blocked (__main__.TranslationHTTP.test_busy_generation_bad_input_and_token_loss_are_blocked) ... ok\ntest_single_translation_and_cpu_setting (__main__.TranslationHTTP.test_single_translation_and_cpu_setting) ... ok\ntest_protected_numbers_and_tags (__main__.TranslationUnit.test_protected_numbers_and_tags) ... ok\ntest_resource_and_remote_guards (__main__.TranslationUnit.test_resource_and_remote_guards) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.979s\n\nOK\n"
+    }
+  ],
+  "installer": {
+    "status": "passed",
+    "checks": [
+      "Install directly from extracted public ZIP",
+      "English-first launcher",
+      "All installed plugin hashes match manifest",
+      "Repeat install creates backups and preserves unrelated workflows",
+      "Tampered payload rejected before installed files change"
+    ],
+    "scope": "Workspace fixtures only; no live backend installation or generation."
+  },
+  "browser": {
+    "status": "passed",
+    "checks": [
+      "HTTP origin, workflow and static-file boundaries; compact H3 widgets with UI-button placeholder accepted",
+      "Hungarian UI, automatic source image, canvas switch, event prompt and guide-image upload/contain preview",
+      "Local translator: synthetic model via real API; original preserved, protected tags/numbers and explicit apply; real 1088 x 608 canvas",
+      "Live source/export review; size/time/prompt resets retain images, events, audio and LoRA edits; close-keyframe advisory never blocks valid export",
+      "Collapsed LoRA summary, enabled-only rows, disabled-row recovery/reactivation and unchanged hidden-row export",
+      "Real LoRA search, add, toggle and strength editing; exported Power loader retains header, order and explicit changes",
+      "Real pointer crop drag, large preview and Escape; HTTP export prepares real images and a linked guide at frame 72; no generation",
+      "LoRA edits and source-settings snapshot survive draft reload",
+      "Reload restores images, event text, sound direction and edited prompt from IndexedDB",
+      "A missing local source snapshot is recreated from the saved workflow without losing images or prompt",
+      "Orphaned draft recovery: attach source template, enable export and preserve all image/crop/timing/prompt/audio/event data",
+      "First image auto-orientation; later images keep canvas; selected-image action, manual override, mismatch hint and draft persistence",
+      "Custom dimensions, invalid-size blocking without losing draft, valid-size correction and persisted translator results",
+      "Eight languages; desktop and narrow-layout screenshots; no horizontal overflow or uncaught browser exception"
+    ],
+    "scope": "Isolated local HTTP + headless Brave. No live workflow changes, no model downloads and no generation. Native H3 video quality is not tested."
+  },
+  "scope": "No generation queued; no live installation changed. Native model video/audio quality not validated by these tests."
+}

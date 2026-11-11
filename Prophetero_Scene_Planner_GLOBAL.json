@@ -1,0 +1,73 @@
+{
+  "id": "dc8c2774-63fe-4bb5-8212-894758808870",
+  "revision": 0,
+  "last_node_id": 2,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "PropheteroScenePlanner",
+      "pos": [
+        60,
+        100
+      ],
+      "size": [
+        520,
+        220
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "planner_url",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PropheteroScenePlanner"
+      },
+      "widgets_values": [
+        "EN"
+      ],
+      "title": "Prophetero Scene Planner · H3 Public Beta"
+    },
+    {
+      "id": 2,
+      "type": "Note",
+      "pos": [
+        650,
+        100
+      ],
+      "size": [
+        600,
+        260
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Open the planner from a supported H3 workflow node or canvas menu. Alternatively click the planner button, choose a template/import source, add your own images and export a new workflow. The planner does not generate video. Read QUICKSTART_EN.md before your first scene."
+      ]
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    "ue_links": []
+  },
+  "version": 0.4
+}

@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {initial,attachSource} from '../prophetero-scene-planner/web/planner-model.mjs';
+const previous={...initial(),seconds:10,preset:'portrait',prompt:'My edited scene.',base:'My base.',events:[{time:2,text:'Movement'}],images:[{name:'my image',role:'start',x:.2,y:.8,time:0}],audio:{category:'ambience',instruction:'Rain'}};
+const before=structuredClone(previous),source={id:'f'.repeat(32),workflow:{nodes:[],links:[]},models:['model.safetensors'],prompt:'Source scene.',seconds:3.75,preset:'landscape'};
+const kept=attachSource(previous,source,true);
+for(const key of ['images','seconds','preset','prompt','base','events','audio'])assert.deepEqual(kept[key],before[key]);
+assert.equal(kept.sourceId,source.id);assert.equal(kept.sourceWorkflow,source.workflow);assert.deepEqual(previous,before);
+const fresh=attachSource(previous,source,false);assert.equal(fresh.images.length,0);assert.equal(fresh.prompt,'Source scene.');assert.equal(fresh.seconds,3.75);
+assert.throws(()=>attachSource(previous,{id:'broken'},true));assert.deepEqual(previous,before);
+const emptyText=attachSource({...previous,prompt:'',base:''},source,true);assert.equal(emptyText.prompt,source.prompt);assert.deepEqual(emptyText.images,previous.images);
+console.log('PASS: source attach preserves image/crop/timing/prompt/audio/event state; explicit new-plan mode and invalid import isolation.');
+const withEdits={...previous,loraEdits:[{nodeId:6,rows:[]}]};
+const switched=attachSource(withEdits,{...source,loras:[{nodeId:9,rows:[]}],settings:[{type:'RandomNoise',values:[123]}]},true);
+assert.deepEqual(switched.loraEdits,[]);assert.equal(switched.loras[0].nodeId,9);assert.deepEqual(switched.settings[0].values,[123]);assert.equal(switched.prompt,previous.prompt);
+console.log('PASS: switching workflow refreshes source settings and clears old loader edits without losing the scene.');

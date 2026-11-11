@@ -1,0 +1,2002 @@
+{
+  "id": "artoftomworks-h3-dasiwa-v4-turbo-simple-global",
+  "revision": 1,
+  "last_node_id": 29,
+  "last_link_id": 26,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        40,
+        630
+      ],
+      "size": [
+        350,
+        400
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "example.png",
+        "image"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "UNETLoader",
+      "pos": [
+        40,
+        1110
+      ],
+      "size": [
+        350,
+        95
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "unet_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "unet_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "DasiwaMinimaxH3_dasiwaHybridV4Turbo_3281858.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPLoader",
+      "pos": [
+        40,
+        1260
+      ],
+      "size": [
+        350,
+        120
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "clip_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            2
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "VAELoader",
+      "pos": [
+        40,
+        1440
+      ],
+      "size": [
+        350,
+        70
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            4,
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_int8_convrot.safetensors"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "VAELoader",
+      "pos": [
+        40,
+        1570
+      ],
+      "size": [
+        350,
+        70
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae_name",
+          "type": "COMBO",
+          "widget": {
+            "name": "vae_name"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            17
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ]
+    },
+    {
+      "id": 6,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        440,
+        1110
+      ],
+      "size": [
+        360,
+        600
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 1
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "shape": 7,
+          "type": "CLIP",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            21
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            3
+          ]
+        }
+      ],
+      "properties": {
+        "Show Strengths": "Single Strength",
+        "Node name for S&R": "Power Lora Loader (rgthree)",
+        "cnr_id": "rgthree-comfy"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 7,
+      "type": "MiniMaxH3ImageToVideo",
+      "pos": [
+        940,
+        630
+      ],
+      "size": [
+        420,
+        540
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 3
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 4
+        },
+        {
+          "name": "first_frame",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "last_frame",
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            7
+          ]
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "MiniMaxH3ImageToVideo"
+      },
+      "widgets_values": [
+        "The subject in the input image moves naturally, with subtle realistic motion. Keep the subject and composition consistent. Smooth camera movement, detailed lighting, coherent motion. Audio: soft natural ambience.",
+        608,
+        1088,
+        90
+      ]
+    },
+    {
+      "id": 8,
+      "type": "RandomNoise",
+      "pos": [
+        1490,
+        1330
+      ],
+      "size": [
+        300,
+        90
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        1,
+        "randomize"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "KSamplerSelect",
+      "pos": [
+        1490,
+        1480
+      ],
+      "size": [
+        300,
+        70
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "BasicScheduler",
+      "pos": [
+        2100,
+        1330
+      ],
+      "size": [
+        300,
+        130
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            13
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        8,
+        1
+      ]
+    },
+    {
+      "id": 11,
+      "type": "BasicGuider",
+      "pos": [
+        2100,
+        630
+      ],
+      "size": [
+        300,
+        100
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 10
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 12,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        2390,
+        890
+      ],
+      "size": [
+        350,
+        200
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 11
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 14
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 12
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 13
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            15,
+            16
+          ]
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 13,
+      "type": "VAEDecode",
+      "pos": [
+        2870,
+        630
+      ],
+      "size": [
+        300,
+        90
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 15
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 14,
+      "type": "VAEDecodeAudio",
+      "pos": [
+        2870,
+        790
+      ],
+      "size": [
+        300,
+        90
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 16
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 17
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            19
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "VAEDecodeAudio"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 15,
+      "type": "CreateVideo",
+      "pos": [
+        3300,
+        630
+      ],
+      "size": [
+        300,
+        120
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 18
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 19
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "widget": {
+            "name": "fps"
+          },
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            20
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        24,
+        8
+      ]
+    },
+    {
+      "id": 16,
+      "type": "SaveVideo",
+      "pos": [
+        3300,
+        820
+      ],
+      "size": [
+        500,
+        360
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/H3_DaSiWa_v4_Turbo_Simple_I2V",
+        "auto",
+        "auto"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "ModelPreviewOverrideKJ",
+      "pos": [
+        1490,
+        630
+      ],
+      "size": [
+        520,
+        640
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 21
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "max_resolution",
+          "type": "INT",
+          "widget": {
+            "name": "max_resolution"
+          },
+          "link": null
+        },
+        {
+          "name": "jpeg_quality",
+          "type": "INT",
+          "widget": {
+            "name": "jpeg_quality"
+          },
+          "link": null
+        },
+        {
+          "name": "suppress_default_preview",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "suppress_default_preview"
+          },
+          "link": null
+        },
+        {
+          "name": "preview_frames",
+          "type": "INT",
+          "widget": {
+            "name": "preview_frames"
+          },
+          "link": null
+        },
+        {
+          "name": "preview_fps",
+          "type": "INT",
+          "widget": {
+            "name": "preview_fps"
+          },
+          "link": null
+        },
+        {
+          "name": "tiny_vae",
+          "type": "COMBO",
+          "shape": 7,
+          "widget": {
+            "name": "tiny_vae"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            9,
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ModelPreviewOverrideKJ",
+        "cnr_id": "comfyui-kjnodes"
+      },
+      "widgets_values": [
+        512,
+        75,
+        false,
+        4,
+        8,
+        "taeh3.safetensors",
+        ""
+      ],
+      "title": "Live video preview · step time and ETA"
+    },
+    {
+      "id": 18,
+      "type": "PrimitiveInt",
+      "title": "Duration (seconds)",
+      "pos": [
+        940,
+        1220
+      ],
+      "size": [
+        420,
+        82
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            22
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        4,
+        "fixed"
+      ]
+    },
+    {
+      "id": 19,
+      "type": "PrimitiveInt",
+      "title": "Frame rate (H3: 24 FPS)",
+      "pos": [
+        940,
+        1340
+      ],
+      "size": [
+        420,
+        82
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "value",
+          "type": "INT",
+          "widget": {
+            "name": "value"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            23,
+            26
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        24,
+        "fixed"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "ComfyMathExpression",
+      "title": "Frame count (automatic H3 alignment)",
+      "pos": [
+        940,
+        1460
+      ],
+      "size": [
+        420,
+        145
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "label": "a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 22
+        },
+        {
+          "name": "values.b",
+          "label": "b",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 23
+        },
+        {
+          "name": "expression",
+          "type": "STRING",
+          "widget": {
+            "name": "expression"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": []
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            24
+          ]
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "max(5, floor((a*b-5)/17+0.5)*17+5)"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "ComfyMathExpression",
+      "title": "Pass FPS to video",
+      "pos": [
+        3300,
+        1250
+      ],
+      "size": [
+        500,
+        110
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "values.a",
+          "label": "a",
+          "type": "FLOAT,INT,BOOLEAN",
+          "link": 26
+        },
+        {
+          "name": "values.b",
+          "type": "FLOAT,INT,BOOLEAN",
+          "shape": 7,
+          "link": null
+        },
+        {
+          "name": "expression",
+          "type": "STRING",
+          "widget": {
+            "name": "expression"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "FLOAT",
+          "type": "FLOAT",
+          "links": [
+            25
+          ]
+        },
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": []
+        },
+        {
+          "name": "BOOL",
+          "type": "BOOLEAN",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "ComfyMathExpression"
+      },
+      "widgets_values": [
+        "a"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "Note",
+      "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+      "pos": [
+        40,
+        65
+      ],
+      "size": [
+        680,
+        255
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "DaSiWa Hybrid v4 Turbo · image to video · live preview\n\nDefault: Euler / simple / 8 steps. Power LoRA starts empty; enable only H3 LoRAs tested with DaSiWa. ArtofTomworks appears in the workflow, never on the video.\n608 × 1088 · 4 s · 24 FPS"
+      ],
+      "color": "#214355",
+      "bgcolor": "#172b35"
+    },
+    {
+      "id": 23,
+      "type": "Note",
+      "title": "QUICK START",
+      "pos": [
+        770,
+        65
+      ],
+      "size": [
+        930,
+        255
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "1. Load a start image.\n2. Enter the scene prompt and set resolution / duration.\n3. If needed, select multiple LoRAs in Power LoRA Loader.\n4. Run the workflow and watch the live preview in group 04.\n\nThe finished video appears in SaveVideo; prefix: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo defaults to Euler + simple + 8 steps. Keep the seed fixed for comparisons. LoRAs are optional and disabled by default."
+      ],
+      "color": "#214355",
+      "bgcolor": "#172b35"
+    },
+    {
+      "id": 24,
+      "type": "Note",
+      "title": "TIME, ETA, AND PLANNING",
+      "pos": [
+        1750,
+        365
+      ],
+      "size": [
+        1020,
+        110
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Model Preview Override shows sampling steps, average step time, and estimated ETA.\n\nThe bottom-right ArtofTomworks monitor also tracks elapsed time while running. ETA is an estimate; decoding and saving can take additional time.\n\nIf the monitor is missing, install the separate ArtofTomworks monitor add-on and refresh the page."
+      ],
+      "color": "#214355",
+      "bgcolor": "#172b35"
+    },
+    {
+      "id": 25,
+      "type": "Note",
+      "title": "CPU, GPU, VRAM, RAM",
+      "pos": [
+        2820,
+        65
+      ],
+      "size": [
+        1040,
+        255
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Live hardware readings in the monitor come from Crystools.\n\nIf blank: ComfyUI Settings → Crystools → enable CPU Usage and GPU VRAM; set Refresh per second to 0.5.\n\nIf VRAM use is high, reduce resolution or video duration first. The monitor does not affect the finished video."
+      ],
+      "color": "#214355",
+      "bgcolor": "#172b35"
+    },
+    {
+      "id": 26,
+      "type": "ArtofTomworksGlobalLanguage",
+      "title": "Language / Nyelv",
+      "pos": [
+        40,
+        365
+      ],
+      "size": [
+        360,
+        90
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "language",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ArtofTomworksGlobalLanguage"
+      },
+      "widgets_values": [
+        "EN"
+      ]
+    },
+    {
+      "id": 27,
+      "type": "Note",
+      "title": "LANGUAGE SELECTOR",
+      "pos": [
+        450,
+        365
+      ],
+      "size": [
+        1000,
+        110
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "Choose a language code on the left: HU, EN, DE, FR, ES, IT, PT or PL. Labels, notes and monitor switch together; generation settings do not change."
+      ],
+      "color": "#214355",
+      "bgcolor": "#172b35"
+    },
+    {
+      "id": 28,
+      "type": "Note",
+      "title": "07 · Requirements and help",
+      "pos": [
+        40,
+        1900
+      ],
+      "size": [
+        3830,
+        245
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "DaSiWa v4 Turbo INT8, MiniMax H3 CLIP + video/audio VAEs; rgthree Power LoRA, KJNodes Model Preview Override, Crystools and the ArtofTomworks H3 monitor. The model filename is shown in its loader. The monitor is a separate extension; Crystools supplies hardware data. Install missing nodes and restart ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+      ],
+      "color": "#214355",
+      "bgcolor": "#172b35"
+    },
+    {
+      "id": 29,
+      "type": "ArtofTomworksSystemMonitor",
+      "title": "ArtofTomworks · System Monitor",
+      "pos": [
+        1750,
+        65
+      ],
+      "size": [
+        1020,
+        300
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      6,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      3,
+      0,
+      6,
+      1,
+      "CLIP"
+    ],
+    [
+      3,
+      6,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      4,
+      4,
+      0,
+      7,
+      1,
+      "VAE"
+    ],
+    [
+      5,
+      4,
+      0,
+      13,
+      1,
+      "VAE"
+    ],
+    [
+      6,
+      1,
+      0,
+      7,
+      2,
+      "IMAGE"
+    ],
+    [
+      7,
+      7,
+      0,
+      11,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      8,
+      7,
+      1,
+      12,
+      4,
+      "LATENT"
+    ],
+    [
+      9,
+      17,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      10,
+      17,
+      0,
+      11,
+      0,
+      "MODEL"
+    ],
+    [
+      11,
+      8,
+      0,
+      12,
+      0,
+      "NOISE"
+    ],
+    [
+      12,
+      9,
+      0,
+      12,
+      2,
+      "SAMPLER"
+    ],
+    [
+      13,
+      10,
+      0,
+      12,
+      3,
+      "SIGMAS"
+    ],
+    [
+      14,
+      11,
+      0,
+      12,
+      1,
+      "GUIDER"
+    ],
+    [
+      15,
+      12,
+      0,
+      13,
+      0,
+      "LATENT"
+    ],
+    [
+      16,
+      12,
+      0,
+      14,
+      0,
+      "LATENT"
+    ],
+    [
+      17,
+      5,
+      0,
+      14,
+      1,
+      "VAE"
+    ],
+    [
+      18,
+      13,
+      0,
+      15,
+      0,
+      "IMAGE"
+    ],
+    [
+      19,
+      14,
+      0,
+      15,
+      1,
+      "AUDIO"
+    ],
+    [
+      20,
+      15,
+      0,
+      16,
+      0,
+      "VIDEO"
+    ],
+    [
+      21,
+      6,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      22,
+      18,
+      0,
+      20,
+      0,
+      "INT"
+    ],
+    [
+      23,
+      19,
+      0,
+      20,
+      1,
+      "INT"
+    ],
+    [
+      24,
+      20,
+      1,
+      7,
+      4,
+      "INT"
+    ],
+    [
+      25,
+      21,
+      0,
+      15,
+      2,
+      "FLOAT"
+    ],
+    [
+      26,
+      19,
+      0,
+      21,
+      0,
+      "INT"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "01 · ArtofTomworks [GLOBAL] | H3 DaSiWa Simple monitor and quick guide",
+      "bounding": [
+        0,
+        0,
+        3910,
+        515
+      ],
+      "color": "#273e4d",
+      "flags": {},
+      "font_size": 19
+    },
+    {
+      "id": 2,
+      "title": "02 · Image and models",
+      "bounding": [
+        0,
+        560,
+        850,
+        1250
+      ],
+      "color": "#30505d",
+      "flags": {},
+      "font_size": 16
+    },
+    {
+      "id": 3,
+      "title": "03 · Scene and video settings",
+      "bounding": [
+        900,
+        560,
+        500,
+        1100
+      ],
+      "color": "#44525c",
+      "flags": {},
+      "font_size": 16
+    },
+    {
+      "id": 4,
+      "title": "04 · Generation and live preview",
+      "bounding": [
+        1450,
+        560,
+        1330,
+        1100
+      ],
+      "color": "#30505d",
+      "flags": {},
+      "font_size": 16
+    },
+    {
+      "id": 5,
+      "title": "05 · Decode video and audio",
+      "bounding": [
+        2830,
+        560,
+        380,
+        450
+      ],
+      "color": "#44525c",
+      "flags": {},
+      "font_size": 16
+    },
+    {
+      "id": 6,
+      "title": "06 · Video FPS and saving",
+      "bounding": [
+        3260,
+        560,
+        650,
+        900
+      ],
+      "color": "#30505d",
+      "flags": {},
+      "font_size": 16
+    },
+    {
+      "id": 7,
+      "title": "07 · Requirements and help",
+      "bounding": [
+        0,
+        1855,
+        3910,
+        335
+      ],
+      "color": "#273e4d",
+      "font_size": 16,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.3,
+      "offset": [
+        55,
+        55
+      ]
+    },
+    "propheteroI18n": {
+      "version": 1,
+      "brand": "ArtofTomworks",
+      "kind": "DaSiWa Simple",
+      "defaultLanguage": "EN",
+      "selectorNodeId": 26,
+      "brandNodeId": 22,
+      "languages": {
+        "HU": {
+          "nodes": {
+            "17": {
+              "title": "Élő videó-előnézet · lépésidő és ETA"
+            },
+            "18": {
+              "title": "Duration (másodperc)"
+            },
+            "19": {
+              "title": "Frame Rate (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Képkockaszám (automatikus H3-igazítás)"
+            },
+            "21": {
+              "title": "FPS továbbítása a videóhoz"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · képből videó · élő előnézet\n\nAlap: Euler / simple / 8 lépés. A Power LoRA üresen indul; csak DaSiWa-val kipróbált H3 LoRA-t kapcsolj be. Az ArtofTomworks név csak itt látszik, a videón nem.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "GYORS INDÍTÁS",
+              "body": "1. Tölts be egy kezdőképet.\n2. Írd be a jelenetet és állítsd a felbontást / időtartamot.\n3. Ha kell, válassz több LoRA-t a Power LoRA Loaderben.\n4. Indítsd el; a 04-es csoportban nézd az élő előnézetet.\n\nA kész videó a SaveVideo node-ban jelenik meg; prefix: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo: Euler + simple + 8 lépés az alap. Összehasonlításhoz tartsd fixen a seedet. A LoRA opcionális, alapból nincs bekapcsolva."
+            },
+            "24": {
+              "title": "IDŐ, ETA ÉS TERVEZÉS",
+              "body": "A Model Preview Override a mintavételezés lépéseit, átlagos lépésidejét és becsült ETA-ját mutatja.\n\nA jobb alsó ArtofTomworks-monitor az eltelt időt futás közben is méri. Az ETA becslés, a dekódolás és a mentés még tovább tarthat.\n\nHa a monitor nem látható, telepítsd a külön ArtofTomworks-monitor kiegészítőt, majd frissítsd az oldalt."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "A monitor élő hardveradatait a már telepített Crystools szolgáltatja.\n\nHa a mezők üresek: ComfyUI Settings → Crystools → CPU Usage és GPU VRAM: ON; Refresh per second: 0,5.\n\nNagy VRAM-terhelésnél csökkentsd először a felbontást vagy a videó hosszát. A monitor nem befolyásolja a kész videót."
+            },
+            "26": {
+              "title": "Nyelv / Language"
+            },
+            "27": {
+              "title": "NYELVVÁLASZTÁS",
+              "body": "Bal oldalt válassz nyelvkódot: HU, EN, DE, FR, ES, IT, PT vagy PL. A feliratok és a monitor együtt váltanak; a generálás nem változik."
+            },
+            "28": {
+              "title": "07 · Szükséges elemek és segítség",
+              "body": "DaSiWa v4 Turbo INT8, MiniMax H3 CLIP + videó/hang VAE; rgthree Power LoRA, KJNodes Model Preview Override, Crystools és ArtofTomworks H3 monitor. A modell neve a betöltőben látható. A monitor külön bővítmény; hardveradatokhoz Crystools kell. Ha hiányzó node jelenik meg, a függőségeket telepítsd, majd indítsd újra a ComfyUI-t.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | H3 DaSiWa Simple monitor és gyorssegéd",
+            "2": "02 · Kép és modellek",
+            "3": "03 · Jelenet és videóbeállítások",
+            "4": "04 · Generálás és élő előnézet",
+            "5": "05 · Kép és hang dekódolása",
+            "6": "06 · Videó FPS és mentés",
+            "7": "07 · Szükséges elemek és segítség"
+          }
+        },
+        "EN": {
+          "nodes": {
+            "17": {
+              "title": "Live video preview · step time and ETA"
+            },
+            "18": {
+              "title": "Duration (seconds)"
+            },
+            "19": {
+              "title": "Frame rate (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Frame count (automatic H3 alignment)"
+            },
+            "21": {
+              "title": "Pass FPS to video"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · image to video · live preview\n\nDefault: Euler / simple / 8 steps. Power LoRA starts empty; enable only H3 LoRAs tested with DaSiWa. ArtofTomworks appears in the workflow, never on the video.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "QUICK START",
+              "body": "1. Load a start image.\n2. Enter the scene prompt and set resolution / duration.\n3. If needed, select multiple LoRAs in Power LoRA Loader.\n4. Run the workflow and watch the live preview in group 04.\n\nThe finished video appears in SaveVideo; prefix: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo defaults to Euler + simple + 8 steps. Keep the seed fixed for comparisons. LoRAs are optional and disabled by default."
+            },
+            "24": {
+              "title": "TIME, ETA, AND PLANNING",
+              "body": "Model Preview Override shows sampling steps, average step time, and estimated ETA.\n\nThe bottom-right ArtofTomworks monitor also tracks elapsed time while running. ETA is an estimate; decoding and saving can take additional time.\n\nIf the monitor is missing, install the separate ArtofTomworks monitor add-on and refresh the page."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "Live hardware readings in the monitor come from Crystools.\n\nIf blank: ComfyUI Settings → Crystools → enable CPU Usage and GPU VRAM; set Refresh per second to 0.5.\n\nIf VRAM use is high, reduce resolution or video duration first. The monitor does not affect the finished video."
+            },
+            "26": {
+              "title": "Language / Nyelv"
+            },
+            "27": {
+              "title": "LANGUAGE SELECTOR",
+              "body": "Choose a language code on the left: HU, EN, DE, FR, ES, IT, PT or PL. Labels, notes and monitor switch together; generation settings do not change."
+            },
+            "28": {
+              "title": "07 · Requirements and help",
+              "body": "DaSiWa v4 Turbo INT8, MiniMax H3 CLIP + video/audio VAEs; rgthree Power LoRA, KJNodes Model Preview Override, Crystools and the ArtofTomworks H3 monitor. The model filename is shown in its loader. The monitor is a separate extension; Crystools supplies hardware data. Install missing nodes and restart ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | H3 DaSiWa Simple monitor and quick guide",
+            "2": "02 · Image and models",
+            "3": "03 · Scene and video settings",
+            "4": "04 · Generation and live preview",
+            "5": "05 · Decode video and audio",
+            "6": "06 · Video FPS and saving",
+            "7": "07 · Requirements and help"
+          }
+        },
+        "DE": {
+          "nodes": {
+            "17": {
+              "title": "Live-Videovorschau · Schrittzeit und ETA"
+            },
+            "18": {
+              "title": "Dauer (Sekunden)"
+            },
+            "19": {
+              "title": "Bildrate (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Bildanzahl (automatische H3-Anpassung)"
+            },
+            "21": {
+              "title": "FPS an Video übergeben"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · Bild zu Video · Live-Vorschau\n\nStandard: Euler / simple / 8 Schritte. Power LoRA ist zunächst leer; nur mit DaSiWa getestete H3-LoRAs aktivieren. ArtofTomworks erscheint nicht im Video.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "SCHNELLSTART",
+              "body": "1. Startbild laden.\n2. Szenentext, Auflösung und Dauer einstellen.\n3. Bei Bedarf mehrere LoRAs im Power LoRA Loader wählen.\n4. Starten und die Live-Vorschau in Gruppe 04 ansehen.\n\nFertiges Video in SaveVideo; Präfix: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo nutzt standardmäßig Euler + simple + 8 Schritte. Für Vergleiche den Seed fixieren. LoRAs sind optional und standardmäßig aus."
+            },
+            "24": {
+              "title": "ZEIT, ETA UND PLANUNG",
+              "body": "Model Preview Override zeigt Schritte, mittlere Schrittzeit und ETA.\n\nDas ArtofTomworks-Panel zeigt die verstrichene Zeit live. Dekodieren und Speichern können zusätzlich dauern.\n\nFehlt das Panel, das separate Monitor-Add-on installieren und die Seite neu laden."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "Live-Hardwarewerte kommen von Crystools.\n\nFalls leer: ComfyUI Settings → Crystools → CPU Usage und GPU VRAM aktivieren; Refresh per second auf 0,5 setzen.\n\nBei hoher VRAM-Nutzung zuerst Auflösung oder Dauer reduzieren. Das Panel verändert das Video nicht."
+            },
+            "26": {
+              "title": "Sprache / Language"
+            },
+            "27": {
+              "title": "SPRACHAUSWAHL",
+              "body": "Links den Sprachcode wählen: HU, EN, DE, FR, ES, IT, PT oder PL. Beschriftungen und Monitor wechseln gemeinsam; die Generierung bleibt unverändert."
+            },
+            "28": {
+              "title": "07 · Voraussetzungen und Hilfe",
+              "body": "DaSiWa v4 Turbo INT8, MiniMax H3 CLIP sowie Video-/Audio-VAE; rgthree Power LoRA, KJNodes Preview, Crystools und ArtofTomworks H3 Monitor. Der Modellname steht im Loader. Monitor und Hardwaredaten benötigen separate Erweiterungen. Fehlende Nodes installieren und ComfyUI neu starten.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | H3 DaSiWa Simple Dashboard und Kurzanleitung",
+            "2": "02 · Bild und Modelle",
+            "3": "03 · Szene und Videoeinstellungen",
+            "4": "04 · Generierung und Live-Vorschau",
+            "5": "05 · Video und Audio dekodieren",
+            "6": "06 · Video-FPS und Speichern",
+            "7": "07 · Voraussetzungen und Hilfe"
+          }
+        },
+        "FR": {
+          "nodes": {
+            "17": {
+              "title": "Aperçu vidéo en direct · temps par étape et ETA"
+            },
+            "18": {
+              "title": "Durée (secondes)"
+            },
+            "19": {
+              "title": "Fréquence d'images (H3 : 24 FPS)"
+            },
+            "20": {
+              "title": "Nombre d'images (ajustement H3 automatique)"
+            },
+            "21": {
+              "title": "Transmettre les FPS à la vidéo"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · image vers vidéo · aperçu en direct\n\nDéfaut : Euler / simple / 8 étapes. Power LoRA démarre vide ; n'activer que des LoRA H3 testés avec DaSiWa. ArtofTomworks n'apparaît pas dans la vidéo.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "DÉMARRAGE RAPIDE",
+              "body": "1. Charger une image initiale.\n2. Régler description, résolution et durée.\n3. Choisir plusieurs LoRAs dans Power LoRA Loader si besoin.\n4. Démarrer et regarder l'aperçu en direct dans le groupe 04.\n\nVidéo terminée dans SaveVideo ; préfixe : video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo utilise Euler + simple + 8 étapes par défaut. Garder la graine fixe pour comparer. Les LoRA sont facultatives et désactivées par défaut."
+            },
+            "24": {
+              "title": "TEMPS, ETA ET PLANIFICATION",
+              "body": "Model Preview Override affiche étapes, durée moyenne et ETA.\n\nLe panneau ArtofTomworks affiche aussi le temps écoulé. Décodage et sauvegarde peuvent durer davantage.\n\nSi le panneau manque, installer l'extension de suivi et recharger la page."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "Les mesures matérielles en direct viennent de Crystools.\n\nSi elles sont vides : ComfyUI Settings → Crystools → activer CPU Usage et GPU VRAM ; régler Refresh per second à 0,5.\n\nSi la VRAM est saturée, réduire d'abord la résolution ou la durée. Le panneau ne modifie pas la vidéo."
+            },
+            "26": {
+              "title": "Langue / Language"
+            },
+            "27": {
+              "title": "CHOIX DE LA LANGUE",
+              "body": "Choisir à gauche un code de langue : HU, EN, DE, FR, ES, IT, PT ou PL. Les titres, les notes et le panneau changent ensemble ; la génération reste identique."
+            },
+            "28": {
+              "title": "07 · Prérequis et aide",
+              "body": "DaSiWa v4 Turbo INT8, CLIP MiniMax H3 et VAE vidéo/audio ; rgthree Power LoRA, aperçu KJNodes, Crystools et moniteur H3 ArtofTomworks. Le nom du modèle est visible dans le chargeur. Le moniteur et les données matérielles nécessitent des extensions. Installer les nœuds manquants et redémarrer ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | tableau de bord H3 DaSiWa Simple et guide rapide",
+            "2": "02 · Image et modèles",
+            "3": "03 · Scène et paramètres vidéo",
+            "4": "04 · Génération et aperçu en direct",
+            "5": "05 · Décodage vidéo et audio",
+            "6": "06 · FPS vidéo et sauvegarde",
+            "7": "07 · Prérequis et aide"
+          }
+        },
+        "ES": {
+          "nodes": {
+            "17": {
+              "title": "Vista previa de vídeo en vivo · tiempo por paso y ETA"
+            },
+            "18": {
+              "title": "Duración (segundos)"
+            },
+            "19": {
+              "title": "Fotogramas por segundo (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Número de fotogramas (ajuste H3 automático)"
+            },
+            "21": {
+              "title": "Enviar FPS al vídeo"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · imagen a vídeo · vista previa\n\nPor defecto: Euler / simple / 8 pasos. Power LoRA empieza vacío; activar solo LoRA H3 probadas con DaSiWa. ArtofTomworks no aparece en el vídeo.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "INICIO RÁPIDO",
+              "body": "1. Cargar una imagen inicial.\n2. Ajustar descripción, resolución y duración.\n3. Elegir varias LoRAs en Power LoRA Loader si hace falta.\n4. Iniciar y ver la vista previa en vivo en el grupo 04.\n\nVídeo final en SaveVideo; prefijo: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo usa Euler + simple + 8 pasos por defecto. Mantener fija la semilla para comparar. Las LoRA son opcionales y están desactivadas al inicio."
+            },
+            "24": {
+              "title": "TIEMPO, ETA Y PLANIFICACIÓN",
+              "body": "Model Preview Override muestra pasos, tiempo medio por paso y ETA.\n\nEl panel ArtofTomworks también mide el tiempo transcurrido. Decodificar y guardar puede tardar más.\n\nSi no aparece el panel, instalar el complemento de monitor y recargar la página."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "Los datos de hardware en vivo vienen de Crystools.\n\nSi faltan: ComfyUI Settings → Crystools → activar CPU Usage y GPU VRAM; Refresh per second en 0,5.\n\nSi la VRAM es alta, reducir primero resolución o duración. El panel no modifica el vídeo."
+            },
+            "26": {
+              "title": "Idioma / Language"
+            },
+            "27": {
+              "title": "SELECCIÓN DE IDIOMA",
+              "body": "Elegir a la izquierda un código de idioma: HU, EN, DE, FR, ES, IT, PT o PL. Cambian los títulos, las notas y el panel; la generación no cambia."
+            },
+            "28": {
+              "title": "07 · Requisitos y ayuda",
+              "body": "DaSiWa v4 Turbo INT8, CLIP MiniMax H3 y VAE de vídeo/audio; rgthree Power LoRA, vista previa KJNodes, Crystools y monitor H3 ArtofTomworks. El nombre del modelo aparece en el cargador. El monitor y los datos de hardware requieren extensiones. Instalar los nodos que falten y reiniciar ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | panel H3 DaSiWa Simple y guía rápida",
+            "2": "02 · Imagen y modelos",
+            "3": "03 · Escena y ajustes de vídeo",
+            "4": "04 · Generación y vista previa en vivo",
+            "5": "05 · Decodificar vídeo y audio",
+            "6": "06 · FPS del vídeo y guardado",
+            "7": "07 · Requisitos y ayuda"
+          }
+        },
+        "IT": {
+          "nodes": {
+            "17": {
+              "title": "Anteprima video in diretta · tempo per passo ed ETA"
+            },
+            "18": {
+              "title": "Durata (secondi)"
+            },
+            "19": {
+              "title": "Frequenza fotogrammi (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Numero fotogrammi (allineamento H3 automatico)"
+            },
+            "21": {
+              "title": "Invia FPS al video"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · immagine a video · anteprima\n\nPredefinito: Euler / simple / 8 passi. Power LoRA è inizialmente vuoto; attivare solo LoRA H3 testate con DaSiWa. ArtofTomworks non compare nel video.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "AVVIO RAPIDO",
+              "body": "1. Carica un'immagine iniziale.\n2. Imposta descrizione, risoluzione e durata.\n3. Se serve, scegli più LoRA in Power LoRA Loader.\n4. Avvia e guarda l'anteprima in diretta nel gruppo 04.\n\nVideo finale in SaveVideo; prefisso: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo usa Euler + simple + 8 passi come base. Mantieni fisso il seed per confronti. Le LoRA sono facoltative e inizialmente disattivate."
+            },
+            "24": {
+              "title": "TEMPO, ETA E PIANIFICAZIONE",
+              "body": "Model Preview Override mostra passi, tempo medio per passo ed ETA.\n\nIl pannello ArtofTomworks misura anche il tempo trascorso. Decodifica e salvataggio possono richiedere più tempo.\n\nSe il pannello manca, installa l'estensione monitor e ricarica la pagina."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "I valori hardware in diretta provengono da Crystools.\n\nSe mancano: ComfyUI Settings → Crystools → attiva CPU Usage e GPU VRAM; imposta Refresh per second su 0,5.\n\nSe la VRAM è alta, riduci prima risoluzione o durata. Il pannello non modifica il video."
+            },
+            "26": {
+              "title": "Lingua / Language"
+            },
+            "27": {
+              "title": "SCELTA DELLA LINGUA",
+              "body": "Scegli a sinistra un codice lingua: HU, EN, DE, FR, ES, IT, PT o PL. Titoli, note e pannello cambiano insieme; la generazione resta uguale."
+            },
+            "28": {
+              "title": "07 · Requisiti e aiuto",
+              "body": "DaSiWa v4 Turbo INT8, CLIP MiniMax H3 e VAE video/audio; rgthree Power LoRA, anteprima KJNodes, Crystools e monitor H3 ArtofTomworks. Il nome del modello è nel loader. Monitor e dati hardware richiedono estensioni. Installa i nodi mancanti e riavvia ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | pannello H3 DaSiWa Simple e guida rapida",
+            "2": "02 · Immagine e modelli",
+            "3": "03 · Scena e impostazioni video",
+            "4": "04 · Generazione e anteprima in diretta",
+            "5": "05 · Decodifica video e audio",
+            "6": "06 · FPS video e salvataggio",
+            "7": "07 · Requisiti e aiuto"
+          }
+        },
+        "PT": {
+          "nodes": {
+            "17": {
+              "title": "Pré-visualização de vídeo ao vivo · tempo por passo e ETA"
+            },
+            "18": {
+              "title": "Duração (segundos)"
+            },
+            "19": {
+              "title": "Taxa de fotogramas (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Número de fotogramas (ajuste H3 automático)"
+            },
+            "21": {
+              "title": "Enviar FPS para o vídeo"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · imagem para vídeo · pré-visualização\n\nPadrão: Euler / simple / 8 passos. Power LoRA começa vazio; ativar apenas LoRAs H3 testadas com DaSiWa. ArtofTomworks não aparece no vídeo.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "INÍCIO RÁPIDO",
+              "body": "1. Carregar imagem inicial.\n2. Definir descrição, resolução e duração.\n3. Se necessário, escolher várias LoRAs no Power LoRA Loader.\n4. Iniciar e ver a pré-visualização ao vivo no grupo 04.\n\nVídeo final no SaveVideo; prefixo: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo usa Euler + simple + 8 passos por padrão. Manter a seed fixa para comparar. As LoRAs são opcionais e começam desligadas."
+            },
+            "24": {
+              "title": "TEMPO, ETA E PLANEAMENTO",
+              "body": "Model Preview Override mostra passos, tempo médio por passo e ETA.\n\nO painel ArtofTomworks também mede o tempo decorrido. Descodificar e guardar podem demorar mais.\n\nSe o painel não aparecer, instalar a extensão do monitor e atualizar a página."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "Os dados de hardware ao vivo vêm do Crystools.\n\nSe estiverem vazios: ComfyUI Settings → Crystools → ativar CPU Usage e GPU VRAM; definir Refresh per second em 0,5.\n\nSe a VRAM estiver alta, reduzir primeiro resolução ou duração. O painel não altera o vídeo."
+            },
+            "26": {
+              "title": "Idioma / Language"
+            },
+            "27": {
+              "title": "ESCOLHA DO IDIOMA",
+              "body": "Escolher à esquerda um código de idioma: HU, EN, DE, FR, ES, IT, PT ou PL. Títulos, notas e painel mudam juntos; a geração não muda."
+            },
+            "28": {
+              "title": "07 · Requisitos e ajuda",
+              "body": "DaSiWa v4 Turbo INT8, CLIP MiniMax H3 e VAE de vídeo/áudio; rgthree Power LoRA, pré-visualização KJNodes, Crystools e monitor H3 ArtofTomworks. O nome do modelo aparece no loader. Monitor e dados de hardware exigem extensões. Instalar os nodes em falta e reiniciar ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | painel H3 DaSiWa Simple e guia rápido",
+            "2": "02 · Imagem e modelos",
+            "3": "03 · Cena e definições de vídeo",
+            "4": "04 · Geração e pré-visualização ao vivo",
+            "5": "05 · Descodificar vídeo e áudio",
+            "6": "06 · FPS do vídeo e gravação",
+            "7": "07 · Requisitos e ajuda"
+          }
+        },
+        "PL": {
+          "nodes": {
+            "17": {
+              "title": "Podgląd wideo na żywo · czas kroku i ETA"
+            },
+            "18": {
+              "title": "Czas trwania (sekundy)"
+            },
+            "19": {
+              "title": "Liczba klatek na sekundę (H3: 24 FPS)"
+            },
+            "20": {
+              "title": "Liczba klatek (automatyczne dopasowanie H3)"
+            },
+            "21": {
+              "title": "Przekaż FPS do wideo"
+            },
+            "22": {
+              "title": "ArtofTomworks · H3 DaSiWa Simple [GLOBAL]",
+              "body": "DaSiWa Hybrid v4 Turbo · obraz na wideo · podgląd na żywo\n\nDomyślnie: Euler / simple / 8 kroków. Power LoRA jest początkowo pusty; włączaj tylko LoRA H3 sprawdzone z DaSiWa. ArtofTomworks nie pojawia się w filmie.\n608 × 1088 · 4 s · 24 FPS"
+            },
+            "23": {
+              "title": "SZYBKI START",
+              "body": "1. Wczytaj obraz początkowy.\n2. Ustaw opis, rozdzielczość i czas.\n3. W razie potrzeby wybierz kilka LoRA w Power LoRA Loader.\n4. Uruchom i obserwuj podgląd na żywo w grupie 04.\n\nGotowy film w SaveVideo; prefiks: video/H3_DaSiWa_v4_Turbo_Simple_I2V.\n\nDaSiWa Turbo domyślnie używa Euler + simple + 8 kroków. Do porównań zachowaj stałe ziarno. LoRA są opcjonalne i na początku wyłączone."
+            },
+            "24": {
+              "title": "CZAS, ETA I PLANOWANIE",
+              "body": "Model Preview Override pokazuje kroki, średni czas kroku i ETA.\n\nPanel ArtofTomworks mierzy też czas pracy. Dekodowanie i zapis mogą potrwać dłużej.\n\nJeśli brak panelu, zainstaluj dodatek monitora i odśwież stronę."
+            },
+            "25": {
+              "title": "CPU, GPU, VRAM, RAM",
+              "body": "Odczyty sprzętowe na żywo pochodzą z Crystools.\n\nJeśli są puste: ComfyUI Settings → Crystools → włącz CPU Usage i GPU VRAM; Refresh per second ustaw na 0,5.\n\nPrzy dużym użyciu VRAM najpierw zmniejsz rozdzielczość lub czas. Panel nie zmienia filmu."
+            },
+            "26": {
+              "title": "Język / Language"
+            },
+            "27": {
+              "title": "WYBÓR JĘZYKA",
+              "body": "Po lewej wybierz kod języka: HU, EN, DE, FR, ES, IT, PT lub PL. Tytuły, opisy i panel zmieniają się razem; generowanie pozostaje bez zmian."
+            },
+            "28": {
+              "title": "07 · Wymagania i pomoc",
+              "body": "DaSiWa v4 Turbo INT8, MiniMax H3 CLIP i VAE obrazu/dźwięku; rgthree Power LoRA, podgląd KJNodes, Crystools oraz monitor H3 ArtofTomworks. Nazwa modelu jest widoczna w loaderze. Monitor i dane sprzętowe wymagają rozszerzeń. Zainstaluj brakujące węzły i uruchom ponownie ComfyUI.\n\nComfyUI: https://docs.comfy.org/installation/install_custom_node\nrgthree: https://github.com/rgthree/rgthree-comfy\nKJNodes: https://github.com/kijai/ComfyUI-KJNodes\nCrystools: https://github.com/crystian/ComfyUI-Crystools"
+            }
+          },
+          "groups": {
+            "1": "01 · ArtofTomworks [GLOBAL] | panel H3 DaSiWa Simple i szybka instrukcja",
+            "2": "02 · Obraz i modele",
+            "3": "03 · Scena i ustawienia wideo",
+            "4": "04 · Generowanie i podgląd na żywo",
+            "5": "05 · Dekodowanie wideo i audio",
+            "6": "06 · FPS wideo i zapis",
+            "7": "07 · Wymagania i pomoc"
+          }
+        }
+      },
+      "variant": "GLOBAL",
+      "selectorType": "ArtofTomworksGlobalLanguage"
+    }
+  },
+  "version": 0.4
+}

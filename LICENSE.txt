@@ -1,0 +1,26 @@
+Prophetero Scene Planner Free Use License 1.0
+Copyright (c) 2026 Prophetero. All rights reserved.
+
+1. Permission to use
+You may use this software and its included workflow ("Software") free of
+charge for personal or commercial creative work. You may sell videos or
+other media you create with it, subject to the rights that apply to your
+source media. You do not need to credit Prophetero in those outputs.
+
+2. Free sharing and modifications
+You may copy, modify, and share the Software, including modified versions,
+only without charging for the Software. Every distributed copy must include
+this complete license and the copyright notice above. Clearly identify
+your modifications. Modified versions must be shared under these same terms.
+
+3. No resale
+You may not sell, rent, license for a fee, place behind paid access, or
+include the Software or a modified version in a paid bundle. This
+restriction concerns the Software itself; it does not prohibit commercial
+creative work made using the Software. Separate written permission from
+Prophetero may grant additional rights.
+
+4. No warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE
+COPYRIGHT HOLDER IS NOT LIABLE FOR CLAIMS OR DAMAGES ARISING FROM ITS USE.

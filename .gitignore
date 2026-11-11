@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+QA/
+local-settings.json
+Projects/
+Exports/
+*.log

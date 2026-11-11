@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {initial,validProject,canvasSize,presets,attachSource} from '../prophetero-scene-planner/web/planner-model.mjs';
+import {translationDefaults,validateTranslation} from '../prophetero-scene-planner/web/translator.mjs';
+for(const [key,size]of Object.entries(presets))assert.deepEqual(canvasSize({...initial(),preset:key}),size);
+const p={...initial(),preset:'custom',customWidth:1088,customHeight:608};assert.deepEqual(canvasSize(validProject(p)),[1088,608]);
+const unfinished=validProject({...p,customWidth:1080});assert.equal(unfinished.customWidth,1080);assert.throws(()=>canvasSize(unfinished));
+for(const size of [[1080,1920],[4096,4096],[0,32],[1024.1,576]])assert.throws(()=>canvasSize({...p,customWidth:size[0],customHeight:size[1]}));
+const old=initial();delete old.translationDraft;delete old.customWidth;delete old.customHeight;assert.deepEqual(validProject(old).translationDraft,translationDefaults());
+const draft={...translationDefaults(),field:'audio',language:'HU',model:'local:test',original:'Rain 24 fps',result:'Eső 24 fps'};assert.deepEqual(validProject({...initial(),translationDraft:draft}).translationDraft,draft);
+assert.throws(()=>validateTranslation({...draft,original:'x'.repeat(12001)}));
+const source=attachSource(initial(),{id:'a'.repeat(32),workflow:{nodes:[],links:[]},preset:'custom',customWidth:960,customHeight:544});assert.deepEqual(canvasSize(source),[960,544]);assert.equal(source.canvasAutoPending,false);
+console.log('PASS: expanded/custom dimensions, source geometry preservation and old/new translation project drafts.');

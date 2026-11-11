@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {geometry,timing,initial,validProject,assemble} from '../prophetero-scene-planner/web/planner-model.mjs';
+import {keys,languages,t} from '../prophetero-scene-planner/web/planner-labels.mjs';
+assert.deepEqual(geometry(300,100,100,100,'cover',0,.5),{x:0,y:0,w:300,h:100});
+assert.deepEqual(geometry(300,100,100,100,'cover',1,.5),{x:-200,y:0,w:300,h:100});
+assert.deepEqual(geometry(300,100,100,100,'contain'),{x:0,y:34,w:100,h:33});
+for(const seconds of [1,2,5,8,15])assert.equal(timing(seconds).frames%17,5);
+assert.equal(validProject(initial()).preset,'landscape');
+assert.throws(()=>validProject({...initial(),images:[{data:'https://evil.example'}]}));
+assert.equal(assemble('Rain.',[{time:3,text:'A distant car passes.'}]),'Rain.\n\nScene progression (approximate timing):\nAround 3.00 seconds: A distant car passes.');
+for(const lang of languages)for(const key of keys)assert.ok(t(key,lang)&&t(key,lang)!==key,`${lang}: ${key}`);
+console.log(`PASS: crop geometry, timing, draft validation, scene text and ${keys.length} labels in ${languages.length} languages.`);
